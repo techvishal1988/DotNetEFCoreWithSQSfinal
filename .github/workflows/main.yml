@@ -59,7 +59,7 @@ jobs:
           --function-name test-poc \
           --package-type Image \
           --code ImageUri= 751111534101.dkr.ecr.us-east-1.amazonaws.com/dotnetsql-api:latest-${{ github.sha }} \
-          --role test-poc-role-x88haozc
+          --role role/service-role/test-poc-role-x88haozc
       #run: |
         # kubectl apply -f deployment-api.yaml -n dotnetsql-ns
         # kubectl apply -f service-api.yaml -n dotnetsql-ns
