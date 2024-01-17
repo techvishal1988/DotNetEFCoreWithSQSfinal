@@ -34,9 +34,9 @@ jobs:
 
         docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dotnetsql-api:latest-${{ github.sha }}
         docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dotnetsql-worker:latest-${{ github.sha }}
-    #- name: Extract Docker image tag
-     # id: extract-tag
-      #run: echo "::set-output name=tag::${{ github.sha }}"
+    - name: Extract Docker image tag
+      id: extract-tag
+      run: echo "::set-output name=tag::${{ github.sha }}"
     #- name: Update deployment.yaml
      # run: |
       #  ls
@@ -58,7 +58,7 @@ jobs:
         aws lambda create-function \
           --function-name test-poc \
           --package-type Image \
-          --image-uri 751111534101.dkr.ecr.us-east-1.amazonaws.com/dotnetsql-api:latest-${{ github.sha }} \
+          --image-uri 751111534101.dkr.ecr.us-east-1.amazonaws.com/dotnetsql-api:latest-latest-${{ steps.extract-tag.outputs.tag }} \
           --role test-poc-role-x88haozc
       #run: |
         # kubectl apply -f deployment-api.yaml -n dotnetsql-ns
