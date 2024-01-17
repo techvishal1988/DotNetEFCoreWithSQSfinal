@@ -34,9 +34,9 @@ jobs:
 
         docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dotnetsql-api:latest-${{ github.sha }}
         docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dotnetsql-worker:latest-${{ github.sha }}
-    - name: Extract Docker image tag
-      id: extract-tag
-      run: echo "::set-output name=tag::${{ github.sha }}"
+    #- name: Extract Docker image tag
+     # id: extract-tag
+      #run: echo "::set-output name=tag::${{ github.sha }}"
     #- name: Update deployment.yaml
      # run: |
       #  ls
