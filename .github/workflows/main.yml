@@ -58,7 +58,7 @@ jobs:
         aws lambda create-function \
           --function-name test-poc \
           --package-type Image \
-          --code ImageUri= ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dotnetsql-api:latest-${{ github.sha }} \
+          --code ImageUri= 751111534101.dkr.ecr.us-east-1.amazonaws.com/dotnetsql-api:latest-${{ github.sha }} \
           --role test-poc-role-x88haozc
       #run: |
         # kubectl apply -f deployment-api.yaml -n dotnetsql-ns
