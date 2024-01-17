@@ -54,7 +54,7 @@ jobs:
       #run: aws eks update-kubeconfig --name hackathon-eks
     #- name: Deploy to EKS
     - name: Update Lambda Function with new image
-      run: aws lambda update-function-code --function-name=test-poc  --image-uri=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dotnetsql-api:latest-${{ steps.extract-tag.outputs.tag }}
+      run: aws lambda update-function-code --function-name=test-poc --package-type Image  --image-uri=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dotnetsql-api:latest-${{ steps.extract-tag.outputs.tag }}
       #run: |
         # kubectl apply -f deployment-api.yaml -n dotnetsql-ns
         # kubectl apply -f service-api.yaml -n dotnetsql-ns
