@@ -55,9 +55,10 @@ jobs:
     #- name: Deploy to EKS
     - name: Update Lambda Function with new image
       run: |
-        aws lambda update-function-configuration \
+        aws lambda create-function \
           --function-name test-poc \
-          --image-uri ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dotnetsql-api:latest-${{ github.sha }}
+          --package-type Image \
+          --code ImageUri= ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dotnetsql-api:latest-${{ github.sha }}
       #run: |
         # kubectl apply -f deployment-api.yaml -n dotnetsql-ns
         # kubectl apply -f service-api.yaml -n dotnetsql-ns
