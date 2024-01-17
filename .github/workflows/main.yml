@@ -37,22 +37,22 @@ jobs:
     - name: Extract Docker image tag
       id: extract-tag
       run: echo "::set-output name=tag::${{ github.sha }}"
-    - name: Update deployment.yaml
-      run: |
-        ls
-        sed  -i '/dotnetsql-api/ s/:latest-.*$/:latest-${{ steps.extract-tag.outputs.tag }}/' deployment-api.yaml
-        sed  -i '/dotnetsql-worker/ s/:latest-.*$/:latest-${{ steps.extract-tag.outputs.tag }}/' deployment-worker.yaml
-        echo "reading file"
-        cat deployment-api.yaml
-        git config --global user.email "dev@demo.com"
-        git config --global user.name "demodev"
-        git status
-        git add . 
-        git commit -m "Update to new version"
-        git push
-    - name: Update kube config
-      run: aws eks update-kubeconfig --name hackathon-eks
-    - name: Deploy to EKS
+    #- name: Update deployment.yaml
+     # run: |
+      #  ls
+       # sed  -i '/dotnetsql-api/ s/:latest-.*$/:latest-${{ steps.extract-tag.outputs.tag }}/' deployment-api.yaml
+        #sed  -i '/dotnetsql-worker/ s/:latest-.*$/:latest-${{ steps.extract-tag.outputs.tag }}/' deployment-worker.yaml
+        #echo "reading file"
+        #cat deployment-api.yaml
+        #git config --global user.email "dev@demo.com"
+        #git config --global user.name "demodev"
+        #git status
+        #git add . 
+        #git commit -m "Update to new version"
+        #git push
+    #- name: Update kube config
+      #run: aws eks update-kubeconfig --name hackathon-eks
+    #- name: Deploy to EKS
     - name: Update Lambda Function with new image
       run: |
         aws lambda update-function-configuration \
