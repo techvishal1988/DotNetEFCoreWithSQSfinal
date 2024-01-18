@@ -1,1 +1,2 @@
 # DotNetEFCoreWithSQS 
+v.0
