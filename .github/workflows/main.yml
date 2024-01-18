@@ -55,7 +55,7 @@ jobs:
     #- name: Deploy to EKS
     - name: Update Lambda Function with new image
       run: |
-        aws lambda create-function \
+        aws lambda update-function-code \
           --function-name test-poc1 \
           --package-type Image \
           --code ImageUri=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dotnetsql-api:latest-${{ github.sha }} \
