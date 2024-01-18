@@ -57,7 +57,7 @@ jobs:
       run: |
         aws lambda update-function-code \
           --function-name test-poc1 \
-          --package-type Image
+          --package-type Image \
           --code ImageUri=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dotnetsql-api:latest-${{ github.sha }} \
           --role arn:aws:iam::751111534101:role/service-role/test-poc-role-x88haozc
       #run: |
