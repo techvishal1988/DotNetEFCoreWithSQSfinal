@@ -56,7 +56,7 @@ jobs:
     - name: Update Lambda Function with new image
       run: |
         aws lambda update-function-code \
-          --function-name test-poc1 \
+          --function-name aws-graphql \
           --image-uri ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dotnetsql-api:latest-${{ github.sha }} \
       #run: |
         # kubectl apply -f deployment-api.yaml -n dotnetsql-ns
